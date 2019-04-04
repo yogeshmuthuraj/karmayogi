@@ -12,7 +12,6 @@ gem 'jquery-rails', '~> 4.3.1'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'sass-rails', '~> 5.0'
-gem 'streetcar-logging', '~> 0.13' # For Rails log formatting
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
