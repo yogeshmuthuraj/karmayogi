@@ -1,9 +1,10 @@
 %form
+  .alert.alert-danger.d-none#field-empty-alert Field cannot be empty!
+  .alert.alert-success#copied-alert Copied!
   .form-group
     %input.form-control#team-link{ type: 'text', placeholder: 'Enter team link here...' }
   .form-group
-    .alert.alert-danger.d-none#field-empty-alert Field cannot be empty!
     %button.btn.btn-primary.btn-block#get-team-id-btn Get Team ID
   .form-group.mt-3.d-none#team-id-group
-    %input.form-control#team-id{ readonly: 'true' }
-    %button.btn.material-icons-outlined{ 'data-toggle' => 'tooltip', title: 'Copy to clipboard' } file_copy
+    %input.form-control.col-sm-10.float-left#team-id{ readonly: 'true' }
+    %button.btn.material-icons-outlined.float-right#copy-team-id-btn{ 'data-toggle' => 'tooltip', title: 'Copy to clipboard', 'data-placement': 'right' } file_copy

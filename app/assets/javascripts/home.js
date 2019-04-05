@@ -26,5 +26,12 @@ function copyTeamIdToClipboard() {
 }
 
 $(document).on('click', '#get-team-id-btn', function(event) {
-  getTeamId(event)
+  getTeamId(event);
+});
+
+$(document).on('click', '#copy-team-id-btn', function(event) {
+  copyTeamIdToClipboard(event);
+  $("#copied-alert").fadeTo(1000, 250).slideUp(700, function(){
+    $("#copied-alert").slideUp(500);
+  });
 });
