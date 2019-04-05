@@ -1,17 +1,22 @@
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
 function getTeamId(event) {
   event.preventDefault();
 
   var teamLink = $('#team-link').val();
 
-  $('#team-id').removeClass('invisible');
-
-  if(teamLink.length === 0) {
-    $('#team-id')[0].innerHTML = 'Field cannot be empty!';
+  if (teamLink.length === 0) {
+    $('#field-empty-alert').removeClass('d-none');
+    $('#team-id-group').addClass('d-none');
   } else {
     var filtered1 = teamLink.replace('https://teams.microsoft.com/l/team/', '');
-    var two = filtered1.split('@')[0];
+    var filtered2 = decodeURIComponent(filtered1).split('@')[0];
 
-    $('#team-id')[0].innerHTML = decodeURIComponent(two);
+    $('#field-empty-alert').addClass('d-none');
+    $('#team-id-group').removeClass('d-none');
+    $('#team-id').val(filtered2);
   }
 }
 

@@ -1,8 +1,9 @@
 %form
   .form-group
-    %label{ for: 'team-link' }
-    %input#team-link.form-control{ type: 'text', placeholder: 'Enter team link here...' }
+    %input.form-control#team-link{ type: 'text', placeholder: 'Enter team link here...' }
   .form-group
-    #team-id.invisible
-      Team ID:
-  %button.btn.btn-primary.btn-block#get-team-id-btn Get Team ID
+    .alert.alert-danger.d-none#field-empty-alert Field cannot be empty!
+    %button.btn.btn-primary.btn-block#get-team-id-btn Get Team ID
+  .form-group.mt-3.d-none#team-id-group
+    %input.form-control#team-id{ readonly: 'true' }
+    %button.btn.material-icons-outlined{ 'data-toggle' => 'tooltip', title: 'Copy to clipboard' } file_copy
