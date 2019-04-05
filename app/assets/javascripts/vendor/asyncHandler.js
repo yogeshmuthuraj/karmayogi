@@ -1,5 +1,3 @@
-// import $ from 'jquery';
-//
 // export default function asyncHandler(url, methodType, data = {}) {
 //   const promiseObj = new Promise((resolve, reject) => {
 //     $.ajax({
