@@ -1,10 +1,12 @@
+- team_link_info= "Team ID is the unique ID given to a Microsoft Team's team. You can use the Get Team ID panel to extract Team ID from Team Link."
 %form
-  .alert.alert-danger.d-none#field-empty-alert Field cannot be empty!
+  .alert.alert-danger.d-none#team-link-input-empty-alert Field cannot be empty!
   .alert.alert-success#copied-alert Copied!
   .form-group
-    %input.form-control#team-link{ type: 'text', placeholder: 'Enter team link here...' }
+    %input.form-control.col-sm-10.float-left#team-link{ type: 'text', required: 'true', placeholder: 'Enter team link here...' }
+    %button.btn.material-icons-outlined.mb-3.float-right#team-link-info{ 'data-toggle' => 'tooltip', title: team_link_info, 'data-placement': 'top' } info
   .form-group
     %button.btn.btn-primary.btn-block#get-team-id-btn Get Team ID
-  .form-group.mt-3.d-none#team-id-group
-    %input.form-control.col-sm-10.float-left#team-id{ readonly: 'true' }
+  .form-group.mt-3.d-none#team-id-output-group
+    %input.form-control.col-sm-10.float-left#team-id-output{ readonly: 'true' }
     %button.btn.material-icons-outlined.float-right#copy-team-id-btn{ 'data-toggle' => 'tooltip', title: 'Copy to clipboard', 'data-placement': 'right' } file_copy
