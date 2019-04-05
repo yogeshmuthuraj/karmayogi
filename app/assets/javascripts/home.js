@@ -3,8 +3,6 @@ $(document).ready(function(){
 });
 
 function getTeamId(event) {
-  event.preventDefault();
-
   var teamLink = $('#team-link').val();
 
   if (teamLink.length === 0) {
@@ -26,10 +24,12 @@ function copyTeamIdToClipboard() {
 }
 
 $(document).on('click', '#get-team-id-btn', function(event) {
+  event.preventDefault();
   getTeamId(event);
 });
 
 $(document).on('click', '#copy-team-id-btn', function(event) {
+  event.preventDefault();
   copyTeamIdToClipboard(event);
   $("#copied-alert").fadeTo(1000, 250).slideUp(700, function(){
     $("#copied-alert").slideUp(500);
