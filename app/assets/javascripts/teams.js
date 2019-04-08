@@ -9,7 +9,7 @@ function displaySiteAlert(type, message) {
       </button>
     </div>
   `);
-  $('#site-alert').removeClass('d-none');
+  $('#site-alert').removeClass('invisible');
 }
 
 function registerTeam(data) {

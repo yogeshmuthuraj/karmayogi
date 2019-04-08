@@ -8,6 +8,7 @@ gem 'haml-rails', '~> 1.0.0'
 gem 'haml', '~> 5.0.0' # For HAML templating
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3.1'
+gem 'openssl'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'sass-rails', '~> 5.0'
