@@ -2,7 +2,6 @@
 - security_token_info = 'The token generated after creating the outgoing webhook.'
 %form
   .alert.alert-danger.d-none#team-id-input-empty-alert Field cannot be empty!
-  -# .alert.alert-success#copiedd-alert Copied!
   .form-group
     %input.form-control.col-sm-10.float-left#team-id-input{ type: 'text', required: 'true', placeholder: 'Enter team id here...' }
     %i.btn.material-icons-outlined.mb-3.float-right#team-id-info{ 'data-toggle' => 'tooltip', title: team_id_info, 'data-placement': 'top' } info

@@ -1,18 +1,10 @@
 class TeamsController < ApplicationController
   def create
-    team_registered = Team.exists?(team_id: team_params[:team_id])
+    Team.create!(team_params)
 
-    if team_registered
-      render json: { message: 'Team has already been registered with Karmayogi.', type: 'alert' }
-    else
-      @team = Team.new(team_params)
-
-      if @team.save
-        render json: { message: 'Team registered successfully.', type: 'success' }
-      else
-        render json: { message: @team.errors, type: 'alert' }
-      end
-    end
+    render json: { type: 'success' , message: 'Team registered successfully.' }
+  rescue ActiveRecord::RecordInvalid =>  error
+    render json: { type: 'danger' , message: error }
   end
 
   private
