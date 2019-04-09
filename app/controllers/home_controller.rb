@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
-
-  require 'openssl'
-  require 'Base64'
-
   def index
+    # Based on format we should change the service end point
+    # respond_to do |format|
+    #   format.html
+    #   format.json service
+    # end
   end
 
   def leaderboard(team_id)
