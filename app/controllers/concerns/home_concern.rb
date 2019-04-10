@@ -2,27 +2,26 @@
 
 module HomeConcern
   def leaderboard(team_id, current_user)
-    response_msg = '{
+    # "text": "Hey <at>#{current_user[:name]},</at> you are #{position}.",
+    # position = '7th'
+    %Q({
       "type": "message",
-      "text": "Hey <at>Jothinathan,Vidhya</at> check out this message",
+      "text": "Hey <at>#{current_user[:name]},</at>.",
       "entities": [
         {
           "type": "mention",
           "mentioned":
             {
-              "id": "29:1TiQn0czlgSWUvL-iY5q5HFUQdztx0ygh2iy3ZkOjQl_0UPyT1bK3RyFLLaz76-KSKACdgKTsVEnRIT_ZTbGYRg",
-              "name": "Jothinathan,Vidhya",
+              "id": "#{current_user[:id]}",
+              "name": "#{current_user[:name]}",
             },
-          "text": "<at>Jothinathan,Vidhya</at>",
+          "text": "<at>#{current_user[:name]}</at>",
         },
       ],
-    }'
-
-    render plain: response_msg
+    })
   end
 
   def help
-
   end
 
   def decide_karma(current_user, mentioned_user, charge, team_id)
@@ -32,7 +31,7 @@ module HomeConcern
     when '--'
       remove_karma(current_user, mentioned_user, team_id)
     else
-      '{ "type": "message", "text": "Error: Some problem, try again!" }'
+      %Q({ "type": "message", "text": "Error: Some problem, try again!" })
     end
   end
 end
@@ -47,7 +46,7 @@ def add_karma(current_user, mentioned_user, team_id)
     %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message}" })
   end
 rescue ActiveRecord::RecordNotFound
-  '{ "type": "message", "text": "Error: Some problem, try again!" }'
+  %Q({ "type": "message", "text": "Error: Some problem, try again!" })
 end
 
 def remove_karma(current_user, mentioned_user, team_id)
@@ -60,5 +59,5 @@ def remove_karma(current_user, mentioned_user, team_id)
     %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message}" })
   end
 rescue ActiveRecord::RecordNotFound
-  '{ "type": "message", "text": "Error: Some problem, try again!" }'
+  %Q({ "type": "message", "text": "Error: Some problem, try again!" })
 end

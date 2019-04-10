@@ -32,9 +32,10 @@ class HomeController < ApplicationController
         response_msg = decide_karma(current_user, mentioned_user, charge, team_id)
       end
     else
-      response_msg = '{ "type": "message", "text": "Error: The Team is not registered." }'
+      response_msg = %Q({ "type": "message", "text": "Error: The Team is not registered." })
     end
-
+    p 'response_msg'
+    p response_msg
     render plain: response_msg
   end
 end
