@@ -29,7 +29,7 @@ class HomeController < ApplicationController
         }
         charge = ActionController::Base.helpers.strip_tags(params[:text].html_safe[/.*\>(.*?)\n/,1]) # Whether ++ or --
 
-        response_msg = decide_karma(current_user, mentioned_user, charge)
+        response_msg = decide_karma(current_user, mentioned_user, charge, team_id)
       end
     else
       response_msg = '{ "type": "message", "text": "Error: The Team is not registered." }'

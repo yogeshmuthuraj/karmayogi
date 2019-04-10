@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_155245) do
+ActiveRecord::Schema.define(version: 2019_04_10_101807) do
 
   create_table "teams", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "team_id"
     t.string "security_token"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "team_id"
+    t.string "name"
+    t.string "user_id"
+    t.integer "karmas"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_users_on_team_id", unique: true
+    t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
 end

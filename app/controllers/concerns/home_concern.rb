@@ -25,24 +25,40 @@ module HomeConcern
 
   end
 
-  def decide_karma(current_user, mentioned_user, charge)
+  def decide_karma(current_user, mentioned_user, charge, team_id)
     case charge
     when '++'
-      add_karma(current_user, mentioned_user)
+      add_karma(current_user, mentioned_user, team_id)
     when '--'
-      remove_karma(current_user, mentioned_user)
+      remove_karma(current_user, mentioned_user, team_id)
     else
       '{ "type": "message", "text": "Error: Some problem, try again!" }'
     end
   end
 end
 
-def add_karma(current_user, mentioned_user)
-  # total_karma =
-  '{ "type": "message", "text": "Plus one for you" }'
+def add_karma(current_user, mentioned_user, team_id)
+  ActiveRecord::Base.transaction do
+    user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name]).first_or_create!(team_id: team_id)
+    user.increment!(:karmas)
+    karmas = user.karmas
+    message = 'p'
+
+    %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message}" })
+  end
+rescue ActiveRecord::RecordNotFound
+  '{ "type": "message", "text": "Error: Some problem, try again!" }'
 end
 
-def remove_karma(current_user, mentioned_user)
-  # total_karma =
-  '{ "type": "message", "text": "Minus one for you" }'
+def remove_karma(current_user, mentioned_user, team_id)
+  ActiveRecord::Base.transaction do
+    user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name]).first_or_create!(team_id: team_id)
+    user.decrement!(:karmas)
+    karmas = user.karmas
+    message = 'p'
+
+    %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message}" })
+  end
+rescue ActiveRecord::RecordNotFound
+  '{ "type": "message", "text": "Error: Some problem, try again!" }'
 end
