@@ -6,7 +6,10 @@ module HomeConcern
   def leaderboard(team_id, current_user)
     leaderboard_message = "\n\n<h1>Leader Board</h1>\n\n"
     not_in_board = 'not in the board yet'
-    position = not_in_board
+    current_user_in_board = User.exists?(team_id: team_id, user_id: current_user[:id])
+    p 'current_user_in_board?'
+    p current_user_in_board
+    position = current_user_in_board ? 1 : not_in_board
 
     leaders = User.where(team_id: team_id).order('karmas DESC')
     table = tp_pre leaders, [:name, :karmas]

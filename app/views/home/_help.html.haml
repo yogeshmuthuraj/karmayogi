@@ -1,0 +1,44 @@
+%h6
+  Adding bot to Teams
+%ul.list-group
+  Steps
+  %li.list-group-item
+    1. In 'Microsoft Teams' app, navigate to 'Manage Teams'
+  %li.list-group-item
+    2. Click on 'Apps' tab
+  %li.list-group-item
+    3. Click on 'Create an outgoing webhook'
+  %li.list-group-item
+    4. Enter the details as follows:
+    %ul.list-group
+      %li.list-group-item
+        Name: karmayogi
+      %li.list-group-item
+        Callback URL: https://karmayogi.herokuapp.com
+      %li.list-group-item
+        Description: 'Your choice'
+      %li.list-group-item
+        Uploadmage: 'Your choice'
+  %li.list-group-item
+    5. Copy the 'security token' generated after creating the webhook(this token will be used for registering team)
+%h6.mt-4
+  Registering team
+%ul.list-group
+  Steps
+  %li.list-group-item
+    1. Get the link of the team from 'Microsoft Teams' app
+  %li.list-group-item
+    2. Paste the link of the team on 'Get Team ID', below this section to extract the 'team id'
+  %li.list-group-item
+    3. In 'Register Team' section paste the 'team ID' and 'security token'(copied in Step 4 of 'Adding bot to Teams')
+%h6.mt-4
+  Usage
+%ul.list-group
+  %li.list-group-item
+    1. Adding karma(points): @karmayogi @user++
+  %li.list-group-item
+    2. Removing karma(points): @karmayogi @user--
+  %li.list-group-item
+    3. Leaderboard for the team: @karmayogi leaderboard
+  %li.list-group-item
+    4. Help: @karmayogi help"
