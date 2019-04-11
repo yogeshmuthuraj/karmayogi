@@ -8,7 +8,7 @@ module HomeConcern
     not_in_board = 'not in the board yet'
     position = not_in_board
 
-    leaders = User.where(team_id: team_id)
+    leaders = User.where(team_id: team_id).order('karmas DESC')
     table = tp_pre leaders, [:name, :karmas]
 
     if leaders.count != 0
@@ -54,6 +54,17 @@ module HomeConcern
   end
 
   def help
+    # 1. Giving Karmas:
+    # 2. leaderboard:
+    # 3. Help:
+    %Q({
+      "type": "message",
+      "text": "<h2>Karmayogi</h2>\n\n
+      1. Adding karma(points): @karmayogi @user++
+      2. Removing karma(points): @karmayogi @user--
+      3. Leaderboard for the team: @karmayogi leaderboard
+      4. Help: @karmayogi help"
+    })
   end
 
   def decide_karma(current_user, mentioned_user, charge, team_id)
