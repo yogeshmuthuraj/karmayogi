@@ -34,8 +34,7 @@ class HomeController < ApplicationController
     else
       response_msg = %Q({ "type": "message", "text": "Error: The Team is not registered." })
     end
-    p 'response_msg'
-    p response_msg
+
     render plain: response_msg
   end
 end

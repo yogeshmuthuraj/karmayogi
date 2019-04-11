@@ -12,6 +12,7 @@ gem 'openssl'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'sass-rails', '~> 5.0'
+gem 'table_print'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do

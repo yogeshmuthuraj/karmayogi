@@ -1,24 +1,56 @@
 # frozen_string_literal: true
 
 module HomeConcern
+  include ApplicationHelper
+
   def leaderboard(team_id, current_user)
-    # "text": "Hey <at>#{current_user[:name]},</at> you are #{position}.",
-    # position = '7th'
-    %Q({
-      "type": "message",
-      "text": "Hey <at>#{current_user[:name]},</at>.",
-      "entities": [
-        {
-          "type": "mention",
-          "mentioned":
-            {
-              "id": "#{current_user[:id]}",
-              "name": "#{current_user[:name]}",
-            },
-          "text": "<at>#{current_user[:name]}</at>",
-        },
-      ],
-    })
+    leaderboard_message = "\n\n<h1>Leader Board</h1>\n\n"
+    not_in_board = 'not in the board yet'
+    position = not_in_board
+
+    leaders = User.where(team_id: team_id)
+    table = tp_pre leaders, [:name, :karmas]
+
+    if leaders.count != 0
+      top_user_record = leaders.order('karmas DESC').first
+      top_user = {
+        id: top_user_record[:user_id],
+        name: top_user_record[:name],
+      }
+
+      top_user_message = "\n\nHey <at>#{top_user[:name]}</at> you are at the top.\n\n"
+      current_user_message = "\n\n<at>#{current_user[:name]}</at> you are #{position}.\n\n"
+
+      %Q({
+        "type": "message",
+        "text": "#{leaderboard_message} #{top_user_message} #{table} #{current_user_message}",
+        "entities": [
+          {
+            "type": "mention",
+            "mentioned":
+              {
+                "id": "#{current_user[:id]}",
+                "name": "#{current_user[:name]}",
+              },
+            "text": "<at>#{current_user[:name]}</at>",
+          },
+          {
+            "type": "mention",
+            "mentioned":
+              {
+                "id": "#{top_user[:id]}",
+                "name": "#{top_user[:name]}",
+              },
+            "text": "<at>#{top_user[:name]}</at>",
+          },
+        ],
+      })
+    else
+      %Q({
+        "type": "message",
+        "text": "#{leaderboard_message} The leaderboard is empty."
+      })
+    end
   end
 
   def help
@@ -38,7 +70,7 @@ end
 
 def add_karma(current_user, mentioned_user, team_id)
   ActiveRecord::Base.transaction do
-    user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name]).first_or_create!(team_id: team_id)
+    user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
     user.increment!(:karmas)
     karmas = user.karmas
     message = 'p'
@@ -51,7 +83,7 @@ end
 
 def remove_karma(current_user, mentioned_user, team_id)
   ActiveRecord::Base.transaction do
-    user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name]).first_or_create!(team_id: team_id)
+    user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
     user.decrement!(:karmas)
     karmas = user.karmas
     message = 'p'

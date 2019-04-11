@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2019_04_10_101807) do
     t.integer "karmas"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_users_on_team_id", unique: true
-    t.index ["user_id"], name: "index_users_on_user_id", unique: true
+    t.index ["team_id"], name: "index_users_on_team_id"
+    t.index ["user_id"], name: "index_users_on_user_id"
   end
 
 end
