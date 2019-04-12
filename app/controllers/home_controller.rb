@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include HomeConcern
+  include JokeConcern
 
   def index
     # Based on format we should change the service end point
@@ -22,6 +23,11 @@ class HomeController < ApplicationController
         response_msg = leaderboard(team_id, current_user)
       elsif params[:text].downcase.match?('help')
         response_msg = help
+      elsif params[:text].downcase.match?('jokeme')
+        response_msg = %Q({
+          "type": "message",
+          "text": "#{eval(get_joke)[:joke]}"
+        })
       else
         mentioned_user = {
           id: params[:entities][0][:mentioned][:id],

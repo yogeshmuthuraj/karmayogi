@@ -57,16 +57,14 @@ module HomeConcern
   end
 
   def help
-    # 1. Giving Karmas:
-    # 2. leaderboard:
-    # 3. Help:
     %Q({
       "type": "message",
-      "text": "<h2>Karmayogi</h2>\n\n
+      "text": "<h1>Karmayogi</h1>\n\n
       1. Adding karma(points): @karmayogi @user++
       2. Removing karma(points): @karmayogi @user--
       3. Leaderboard for the team: @karmayogi leaderboard
-      4. Help: @karmayogi help"
+      4. Get random joke: @karmayogi jokeme
+      5. Help: @karmayogi help"
     })
   end
 
