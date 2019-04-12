@@ -13,13 +13,4 @@ module ApplicationHelper
   def tp_pre data, options={}
     content_tag :pre, TablePrint::Printer.new(data, options).table_print
   end
-
-  def with_captured_stdout
-    original_stdout = $stdout
-    $stdout = StringIO.new
-    yield
-    $stdout.string
-  ensure
-    $stdout = original_stdout
-  end
 end

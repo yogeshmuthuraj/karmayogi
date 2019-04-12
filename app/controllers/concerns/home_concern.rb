@@ -69,10 +69,9 @@ module HomeConcern
   end
 
   def decide_karma(current_user, mentioned_user, charge, team_id)
-    case charge
-    when '++'
+    if charge.match?('\+\+')
       add_karma(current_user, mentioned_user, team_id)
-    when '--'
+    elsif charge.match?('\-\-')
       remove_karma(current_user, mentioned_user, team_id)
     else
       %Q({ "type": "message", "text": "Error: Some problem, try again!" })
@@ -88,7 +87,7 @@ def add_karma(current_user, mentioned_user, team_id)
     positive_messages = Message.where(positive: true)
     message = positive_messages.find(positive_messages.ids.shuffle.first)
 
-    %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message}" })
+    %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message[:text]}" })
   end
 rescue ActiveRecord::RecordNotFound
   %Q({ "type": "message", "text": "Error: Some problem, try again!" })
@@ -102,7 +101,7 @@ def remove_karma(current_user, mentioned_user, team_id)
     negative_messages = Message.where(positive: false)
     message = negative_messages.find(negative_messages.ids.shuffle.first)
 
-    %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message}" })
+    %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message[:text]}" })
   end
 rescue ActiveRecord::RecordNotFound
   %Q({ "type": "message", "text": "Error: Some problem, try again!" })
