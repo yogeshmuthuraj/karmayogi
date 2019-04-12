@@ -17,19 +17,6 @@
           Currently hosted at Heroku's free plan. So use judiciously.
         %div#site-alert.invisible
       = render partial: 'home/help'
-      %div.row.mt-4
-        %div.col
-          %div.card
-            %div.card-header
-              Register Team
-            %div.card-body
-              = render partial: 'home/register_team_form'
-        %div.col
-          %div.card
-            %div.card-header
-              Get Team ID
-            %div.card-body
-              = render partial: 'home/get_team_id_form'
       %h6.mt-4
         Roadmap
       %ul.list-group
@@ -45,8 +32,30 @@
           Extend to Slack
         %li.list-group-item
           Create Bot and a dedicated app
-        %div.footer
-          %hr
-          Yogesh Kumar Muthuraj
-        %button.btn.btn-link{ type: 'button' }
-          %a{ href: 'https://github.com/yogeshmuthuraj' }
+      %h6.mt-4
+        Note
+      %ul.list-group
+        No one can be held responsible for:
+        %li.list-group-item
+          Service down
+        %li.list-group-item
+          Data loss
+        %li.list-group-item
+          or for any other issues that comes with free hosting
+      %div.row.mt-4
+        %div.col
+          %div.card
+            %div.card-header
+              Register Team
+            %div.card-body
+              = render partial: 'home/register_team_form'
+        %div.col
+          %div.card
+            %div.card-header
+              Get Team ID
+            %div.card-body
+              = render partial: 'home/get_team_id_form'
+    %div.footer
+      %hr
+        %button.btn.btn-link
+          %a{ href: 'https://github.com/yogeshmuthuraj' } Yogesh Kumar Muthuraj

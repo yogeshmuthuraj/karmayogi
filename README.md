@@ -16,7 +16,7 @@ Currently hosted at Heroku's free plan. So use judiciously.
 ###### Registering team
 
 *   1\. Navigate to 'Get link to team', copy the team link.
-*   2\. Paste the link of the team on 'Get Team ID'(in the form below this section) to extract the 'team id'
+*   2\. Paste the link of the team on 'Get Team ID' to extract the 'team id'
 *   3\. In 'Register Team' section paste the 'team ID' and 'security token'(copied in Step 4 of 'Adding karmayogi to Microsoft Teams')
 
 ###### Usage
