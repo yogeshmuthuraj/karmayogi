@@ -10,6 +10,9 @@ function displaySiteAlert(type, message) {
     </div>
   `);
   $('#site-alert').removeClass('invisible');
+  $('#site-alert').fadeTo(1000, 250).slideUp(700, function() {
+    $('#site-alert').slideUp(500);
+  });
 }
 
 function registerTeam(data) {

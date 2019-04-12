@@ -16,6 +16,19 @@
         %h6.text-center
           Currently hosted at Heroku's free plan. So use judiciously.
         %div#site-alert.invisible
+      %div.row.mt-4
+        %div.col
+          %div.card
+            %div.card-header
+              Register Team
+            %div.card-body
+              = render partial: 'home/register_team_form'
+        %div.col
+          %div.card
+            %div.card-header
+              Get Team ID
+            %div.card-body
+              = render partial: 'home/get_team_id_form'
       = render partial: 'home/help'
       %h6.mt-4
         Roadmap
@@ -42,19 +55,6 @@
           Data loss
         %li.list-group-item
           or for any other issues that comes with free hosting
-      %div.row.mt-4
-        %div.col
-          %div.card
-            %div.card-header
-              Register Team
-            %div.card-body
-              = render partial: 'home/register_team_form'
-        %div.col
-          %div.card
-            %div.card-header
-              Get Team ID
-            %div.card-body
-              = render partial: 'home/get_team_id_form'
     %div.footer
       %hr
         %button.btn.btn-link

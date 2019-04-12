@@ -31,7 +31,7 @@ $(document).on('click', '#get-team-id-btn', function(event) {
 $(document).on('click', '#copy-team-id-btn', function(event) {
   event.preventDefault();
   copyTeamIdToClipboard(event);
-  $("#copied-alert").fadeTo(1000, 250).slideUp(700, function() {
-    $("#copied-alert").slideUp(500);
+  $('#copied-alert').fadeTo(1000, 250).slideUp(700, function() {
+    $('#copied-alert').slideUp(500);
   });
 });
