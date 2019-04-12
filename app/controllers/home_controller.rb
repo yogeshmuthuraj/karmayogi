@@ -3,11 +3,6 @@ class HomeController < ApplicationController
   include JokeConcern
 
   def index
-    # Based on format we should change the service end point
-    # respond_to do |format|
-    #   format.html
-    #   format.json service
-    # end
   end
 
   def service

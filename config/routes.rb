@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :teams
-  root 'home#index'
+  resources :teams, only: :create
 
-  post '/service', to: 'home#service'
+  post '/', to: 'home#service'
+  get '/', to: 'home#index'
 end
