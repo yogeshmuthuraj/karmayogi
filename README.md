@@ -24,7 +24,8 @@ Currently hosted at Heroku's free plan. So use judiciously.
 *   1\. Adding karma(points): @karmayogi @user++
 *   2\. Removing karma(points): @karmayogi @user--
 *   3\. Leaderboard for the team: @karmayogi leaderboard
-*   4\. Help: @karmayogi help"
+*   4\. Get random joke: @karmayogi jokeme
+*   5\. Help: @karmayogi help"
 
 ###### Roadmap
 
