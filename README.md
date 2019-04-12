@@ -1,24 +1,20 @@
-Karmayogi     
-
 Karmayogi
 =========
 Currently hosted at Heroku's free plan. So use judiciously.
 ###### Adding bot to Teams
 
-Steps   
 *   1\. In 'Microsoft Teams' app, navigate to 'Manage Teams'
 *   2\. Click on 'Apps' tab
 *   3\. Click on 'Create an outgoing webhook'
 *   4\. Enter the details as follows:
-   *   Name: karmayogi
-   *   Callback URL: https://karmayogi.herokuapp.com
-   *   Description: 'Your choice'
-   *   Upload image: 'Your choice'
+   *  * Name: karmayogi
+   *  * Callback URL: https://karmayogi.herokuapp.com
+   *  * Description: 'Your choice'
+   *  * Upload image: 'Your choice'
 *   5\. Copy the 'security token' generated after creating the webhook(this token will be used for registering team)
 
 ###### Registering team
 
-Steps   
 *   1\. Get the link of the team from 'Microsoft Teams' app
 *   2\. Paste the link of the team on 'Get Team ID', below this section to extract the 'team id'
 *   3\. In 'Register Team' section paste the 'team ID' and 'security token'(copied in Step 4 of 'Adding bot to Teams')
