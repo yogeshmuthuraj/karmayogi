@@ -1,7 +1,39 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+message_attributes = [
+  { positive: false, text: 'Better lunk next time.' },
+  { positive: false, text: 'Can do better.' },
+  { positive: false, text: 'Come on!!' },
+  { positive: false, text: 'Comeback strong.' },
+  { positive: false, text: 'Hmm... very bad!' },
+  { positive: false, text: 'It is not good!' },
+  { positive: false, text: 'karmayogi hates you!' },
+  { positive: false, text: 'Learn something.' },
+  { positive: false, text: 'Nevermind.' },
+  { positive: false, text: 'Oh my god!' },
+  { positive: false, text: 'Really?' },
+  { positive: false, text: 'This is bad.' },
+  { positive: false, text: 'This is cruelity.' },
+  { positive: false, text: 'This should not be happening.' },
+  { positive: false, text: 'This should not happen.' },
+  { positive: false, text: 'Why?' },
+  { positive: false, text: 'You deserve it.' },
+  { positive: true, text: 'All is well.' },
+  { positive: true, text: 'All the best.' },
+  { positive: true, text: 'Are you Batman?' },
+  { positive: true, text: 'Awesome one.' },
+  { positive: true, text: 'Good one.' },
+  { positive: true, text: 'Great one.' },
+  { positive: true, text: 'Hurray!' },
+  { positive: true, text: 'karmayogi likes you!' },
+  { positive: true, text: 'Keep rocking.' },
+  { positive: true, text: 'No words.' },
+  { positive: true, text: 'Party!' },
+  { positive: true, text: 'You are an inspiration.' },
+  { positive: true, text: 'You are great!' },
+  { positive: true, text: 'You are the sailor!' },
+  { positive: true, text: 'You deserve it.' },
+  { positive: true, text: 'You rock!' },
+]
+
+message_attributes.each do |attributes|
+  Message.create(attributes) unless Message.where(attributes).first
+end

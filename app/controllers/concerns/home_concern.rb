@@ -12,7 +12,8 @@ module HomeConcern
     table = tp_pre leaders, [:name, :karmas]
 
     position = current_user_in_board ? leaders.map(&:user_id).index(current_user[:id]) : not_in_board
-    position = "your position: #{position + 1}"
+    position = "your position: #{position + 1}" if current_user_in_board
+
     if leaders.count != 0
       top_user_record = leaders.order('karmas DESC').first
       top_user = {
@@ -84,7 +85,8 @@ def add_karma(current_user, mentioned_user, team_id)
     user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
     user.increment!(:karmas)
     karmas = user.karmas
-    message = 'p'
+    positive_messages = Message.where(positive: true)
+    message = positive_messages.find(positive_messages.ids.shuffle.first)
 
     %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message}" })
   end
@@ -97,7 +99,8 @@ def remove_karma(current_user, mentioned_user, team_id)
     user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
     user.decrement!(:karmas)
     karmas = user.karmas
-    message = 'p'
+    negative_messages = Message.where(positive: false)
+    message = negative_messages.find(negative_messages.ids.shuffle.first)
 
     %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message}" })
   end
