@@ -1,24 +1,50 @@
-# README
+Karmayogi     
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Karmayogi
+=========
+Currently hosted at Heroku's free plan. So use judiciously.
+###### Adding bot to Teams
 
-Things you may want to cover:
+Steps   
+*   1\. In 'Microsoft Teams' app, navigate to 'Manage Teams'
+*   2\. Click on 'Apps' tab
+*   3\. Click on 'Create an outgoing webhook'
+*   4\. Enter the details as follows:
+   *   Name: karmayogi
+   *   Callback URL: https://karmayogi.herokuapp.com
+   *   Description: 'Your choice'
+   *   Upload image: 'Your choice'
+*   5\. Copy the 'security token' generated after creating the webhook(this token will be used for registering team)
 
-* Ruby version
+###### Registering team
 
-* System dependencies
+Steps   
+*   1\. Get the link of the team from 'Microsoft Teams' app
+*   2\. Paste the link of the team on 'Get Team ID', below this section to extract the 'team id'
+*   3\. In 'Register Team' section paste the 'team ID' and 'security token'(copied in Step 4 of 'Adding bot to Teams')
 
-* Configuration
+###### Usage
 
-* Database creation
+*   1\. Adding karma(points): @karmayogi @user++
+*   2\. Removing karma(points): @karmayogi @user--
+*   3\. Leaderboard for the team: @karmayogi leaderboard
+*   4\. Help: @karmayogi help"
 
-* Database initialization
+###### Roadmap
 
-* How to run the test suite
+*   Encrypt the communication using HMAC
+*   Get a domain and hosting space
+*   Increase scalability
+*   Feature to manage registered teams
+*   Extend to Slack
+*   Create Bot and a dedicated app
 
-* Services (job queues, cache servers, search engines, etc.)
+###### Note
+*   No one can be held responsible for:
+*  * Service down
+*  * Data loss
+*  * and other issues that comes with free hosting
 
-* Deployment instructions
+* * *
 
-* ...
+Yogesh Kumar Muthuraj
