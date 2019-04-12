@@ -5,15 +5,14 @@ module HomeConcern
 
   def leaderboard(team_id, current_user)
     leaderboard_message = "\n\n<h1>Leader Board</h1>\n\n"
-    not_in_board = 'not in the board yet'
+    not_in_board = 'you are not in the board yet'
     current_user_in_board = User.exists?(team_id: team_id, user_id: current_user[:id])
-    p 'current_user_in_board?'
-    p current_user_in_board
-    position = current_user_in_board ? 1 : not_in_board
 
     leaders = User.where(team_id: team_id).order('karmas DESC')
     table = tp_pre leaders, [:name, :karmas]
 
+    position = current_user_in_board ? leaders.map(&:user_id).index(current_user[:id]) : not_in_board
+    position = "your position: #{position + 1}"
     if leaders.count != 0
       top_user_record = leaders.order('karmas DESC').first
       top_user = {
@@ -22,7 +21,7 @@ module HomeConcern
       }
 
       top_user_message = "\n\nHey <at>#{top_user[:name]}</at> you are at the top.\n\n"
-      current_user_message = "\n\n<at>#{current_user[:name]}</at> you are #{position}.\n\n"
+      current_user_message = "\n\n<at>#{current_user[:name]}</at> #{position}.\n\n"
 
       %Q({
         "type": "message",

@@ -1,11 +1,11 @@
 karmayogi
 =========
 Currently hosted at Heroku's free plan. So use judiciously.
-###### Adding bot to Teams
+###### Adding karmayogi to Microsoft Teams
 
-*   1\. In 'Microsoft Teams' app, navigate to 'Manage Teams'
+*   1\. In 'Microsoft Teams', navigate to 'Manage team'
 *   2\. Click on 'Apps' tab
-*   3\. Click on 'Create an outgoing webhook'
+*   3\. Click on 'Create an outgoing webhook'(bottom right)
 *   4\. Enter the details as follows:
    *  * Name: karmayogi
    *  * Callback URL: https://karmayogi.herokuapp.com
@@ -15,9 +15,9 @@ Currently hosted at Heroku's free plan. So use judiciously.
 
 ###### Registering team
 
-*   1\. Get the link of the team from 'Microsoft Teams' app
-*   2\. Paste the link of the team on 'Get Team ID', below this section to extract the 'team id'
-*   3\. In 'Register Team' section paste the 'team ID' and 'security token'(copied in Step 4 of 'Adding bot to Teams')
+*   1\. Navigate to 'Get link to team', copy the team link.
+*   2\. Paste the link of the team on 'Get Team ID'(in the form below this section) to extract the 'team id'
+*   3\. In 'Register Team' section paste the 'team ID' and 'security token'(copied in Step 4 of 'Adding karmayogi to Microsoft Teams')
 
 ###### Usage
 
@@ -25,7 +25,7 @@ Currently hosted at Heroku's free plan. So use judiciously.
 *   2\. Removing karma(points): @karmayogi @user--
 *   3\. Leaderboard for the team: @karmayogi leaderboard
 *   4\. Get random joke: @karmayogi jokeme
-*   5\. Help: @karmayogi help"
+*   5\. Help: @karmayogi help
 
 ###### Roadmap
 
