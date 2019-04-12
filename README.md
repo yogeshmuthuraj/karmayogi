@@ -1,4 +1,4 @@
-Karmayogi
+karmayogi
 =========
 Currently hosted at Heroku's free plan. So use judiciously.
 ###### Adding bot to Teams

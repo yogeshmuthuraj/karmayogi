@@ -59,7 +59,7 @@ module HomeConcern
   def help
     %Q({
       "type": "message",
-      "text": "<h1>Karmayogi</h1>\n\n
+      "text": "<h1>karmayogi</h1>\n\n
       1. Adding karma(points): @karmayogi @user++
       2. Removing karma(points): @karmayogi @user--
       3. Leaderboard for the team: @karmayogi leaderboard
