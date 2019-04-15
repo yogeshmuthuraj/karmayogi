@@ -39,8 +39,7 @@ Currently hosted at Heroku's free plan. So use judiciously.
 ###### Note
 *   No one can be held responsible for:
 *  * Service down
-*  * Data loss
-*  * and other issues that comes with free hosting
+*  * Data loss and other issues that comes with free hosting
 *  * Feel free to contribute by either forking or raising a pull request
 *  * Feel free to raise an issue if any bug is found
 
