@@ -4,7 +4,7 @@ module HomeConcern
   include ApplicationHelper
 
   def leaderboard(team_id, current_user)
-    leaderboard_message = "\n\n<h1>LeaderBoard</h1>\n\n"
+    leaderboard_message = "\n\n<h1>Leaderboard</h1>\n\n"
     not_in_board = 'you are not in the board yet'
     current_user_in_board = User.exists?(team_id: team_id, user_id: current_user[:id])
 
