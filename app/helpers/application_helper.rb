@@ -10,7 +10,7 @@ module ApplicationHelper
     end
   end
 
-  def tp_pre data, options={}
+  def print_table_as_preformatted data, options={}
     content_tag :pre, TablePrint::Printer.new(data, options).table_print
   end
 end
