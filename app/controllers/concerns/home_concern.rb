@@ -4,12 +4,12 @@ module HomeConcern
   include ApplicationHelper
 
   def leaderboard(team_id, current_user)
-    leaderboard_message = "\n\n<h1>Leader Board</h1>\n\n"
+    leaderboard_message = "\n\n<h1>Leaderboard</h1>\n\n"
     not_in_board = 'you are not in the board yet'
     current_user_in_board = User.exists?(team_id: team_id, user_id: current_user[:id])
 
     leaders = User.where(team_id: team_id).order('karmas DESC')
-    table = tp_pre leaders, [:name, :karmas]
+    table = print_table_as_preformatted leaders, [:name, :karma]
 
     position = current_user_in_board ? leaders.map(&:user_id).index(current_user[:id]) : not_in_board
     position = "your position: #{position + 1}" if current_user_in_board
@@ -87,10 +87,10 @@ def add_karma(current_user, mentioned_user, team_id)
     positive_messages = Message.where(positive: true)
     message = positive_messages.find(positive_messages.ids.shuffle.first)
 
-    %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message[:text]}" })
+    %Q({ "type": "message", "text": "Karma: #{karmas}. #{message[:text]}" })
   end
 rescue ActiveRecord::RecordNotFound
-  %Q({ "type": "message", "text": "Error: Some problem, try again!" })
+  %Q({ "type": "message", "text": "Error: Sorry, karmayogi is experiencing a problem, try again!" })
 end
 
 def remove_karma(current_user, mentioned_user, team_id)
@@ -101,8 +101,8 @@ def remove_karma(current_user, mentioned_user, team_id)
     negative_messages = Message.where(positive: false)
     message = negative_messages.find(negative_messages.ids.shuffle.first)
 
-    %Q({ "type": "message", "text": "Karmas: #{karmas}. #{message[:text]}" })
+    %Q({ "type": "message", "text": "Karma: #{karmas}. #{message[:text]}" })
   end
 rescue ActiveRecord::RecordNotFound
-  %Q({ "type": "message", "text": "Error: Some problem, try again!" })
+  %Q({ "type": "message", "text": "Error: Sorry, karmayogi is experiencing a problem, try again!" })
 end
