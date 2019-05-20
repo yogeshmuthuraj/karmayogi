@@ -4,10 +4,10 @@ one:
   team_id: MyString
   username: MyString
   user_id: MyString
-  karmas: 1
+  karma: 1
 
 two:
   team_id: MyString
   username: MyString
   user_id: MyString
-  karmas: 1
+  karma: 1

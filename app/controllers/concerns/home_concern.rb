@@ -8,14 +8,14 @@ module HomeConcern
     not_in_board = 'you are not in the board yet'
     current_user_in_board = User.exists?(team_id: team_id, user_id: current_user[:id])
 
-    leaders = User.where(team_id: team_id).order('karmas DESC')
+    leaders = User.where(team_id: team_id).order('karma DESC')
     table = print_table_as_preformatted leaders, [:name, :karma]
 
     position = current_user_in_board ? leaders.map(&:user_id).index(current_user[:id]) : not_in_board
     position = "your position: #{position + 1}" if current_user_in_board
 
     if leaders.count != 0
-      top_user_record = leaders.order('karmas DESC').first
+      top_user_record = leaders.order('karma DESC').first
       top_user = {
         id: top_user_record[:user_id],
         name: top_user_record[:name],
@@ -82,12 +82,12 @@ end
 def add_karma(current_user, mentioned_user, team_id)
   ActiveRecord::Base.transaction do
     user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
-    user.increment!(:karmas)
-    karmas = user.karmas
+    user.increment!(:karma)
+    karma = user.karma
     positive_messages = Message.where(positive: true)
     message = positive_messages.find(positive_messages.ids.shuffle.first)
 
-    %Q({ "type": "message", "text": "Karma: #{karmas}. #{message[:text]}" })
+    %Q({ "type": "message", "text": "Karma: #{karma}. #{message[:text]}" })
   end
 rescue ActiveRecord::RecordNotFound
   %Q({ "type": "message", "text": "Error: Sorry, karmayogi is experiencing a problem, try again!" })
@@ -96,12 +96,12 @@ end
 def remove_karma(current_user, mentioned_user, team_id)
   ActiveRecord::Base.transaction do
     user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
-    user.decrement!(:karmas)
-    karmas = user.karmas
+    user.decrement!(:karma)
+    karma = user.karma
     negative_messages = Message.where(positive: false)
     message = negative_messages.find(negative_messages.ids.shuffle.first)
 
-    %Q({ "type": "message", "text": "Karma: #{karmas}. #{message[:text]}" })
+    %Q({ "type": "message", "text": "Karma: #{karma}. #{message[:text]}" })
   end
 rescue ActiveRecord::RecordNotFound
   %Q({ "type": "message", "text": "Error: Sorry, karmayogi is experiencing a problem, try again!" })
