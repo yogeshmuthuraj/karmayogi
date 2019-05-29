@@ -5,7 +5,7 @@ module HomeConcern
 
   def leaderboard(team_id, current_user)
     leaderboard_message = "\n\n<h1>Leaderboard</h1>\n\n"
-    not_in_board = 'you are not in the board yet'
+    not_in_board = 'you are not on the board yet'
     current_user_in_board = User.exists?(team_id: team_id, user_id: current_user[:id])
 
     leaders = User.where(team_id: team_id).order('karma DESC')
