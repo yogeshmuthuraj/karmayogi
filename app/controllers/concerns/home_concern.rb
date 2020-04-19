@@ -87,32 +87,38 @@ module HomeConcern
     p 'buddy_tester'
     p buddy_tester
 
-    buddy_user = User.where(name: buddy_tester, team_id: team_id)
+    buddy_user = User.where(name: buddy_tester, team_id: team_id).first
 
-    p 'buddy_user'
-    p buddy_user
-    p buddy_user.first
-
-    buddy_user = {
-      id: buddy_user.first[:user_id],
-      name: buddy_user.first[:name],
-    }
-
-    %Q({
-      "type": "message",
-      "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>"
-      "entities": [
-        {
-          "type": "mention",
-          "mentioned":
-            {
-              "id": "#{buddy_user[:id]}",
-              "name": "#{buddy_user[:name]}",
-            },
-          "text": "<at>#{buddy_user[:name]}</at>",
-        }
+    if buddy_user
+      buddy_user = {
+        id: buddy_user[:user_id],
+        name: buddy_user[:name],
       }
-    })
+
+      p 'buddy_user'
+      p buddy_user
+
+      %Q({
+        "type": "message",
+        "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>"
+        "entities": [
+          {
+            "type": "mention",
+            "mentioned":
+              {
+                "id": "#{buddy_user[:id]}",
+                "name": "#{buddy_user[:name]}",
+              },
+            "text": "<at>#{buddy_user[:name]}</at>",
+          }
+        }
+      })
+    else
+      %Q({
+        "type": "message",
+        "text": "Your buddy tester is <at>#{buddy_tester}</at>"
+      })
+    end
   end
 end
 
