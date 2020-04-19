@@ -16,6 +16,8 @@ class HomeController < ApplicationController
 
       if params[:text].downcase.match?('leaderboard')
         response_msg = leaderboard(team_id, current_user)
+        p 'response_msg'
+        p response_msg
       elsif params[:text].downcase.match?('help')
         response_msg = help
       elsif params[:text].downcase.match?('jokeme')
@@ -27,11 +29,6 @@ class HomeController < ApplicationController
         response_msg = find_buddy_tester(team_id)
         p 'response_msg'
         p response_msg
-        response_msg
-        response_msg = %Q({
-          "type": "message",
-          "text": "#{eval(get_joke)[:joke]}"
-        })
       else
         mentioned_user = {
           id: params[:entities][0][:mentioned][:id],
