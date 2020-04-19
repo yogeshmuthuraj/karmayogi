@@ -86,6 +86,9 @@ module HomeConcern
 
     buddy_user = User.where(name: buddy_user, team_id: team_id).first
 
+    p 'buddy_user'
+    p buddy_user
+
     buddy_user = {
       id: buddy_user[:user_id],
       name: buddy_user[:name],
