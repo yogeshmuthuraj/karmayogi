@@ -28,6 +28,10 @@ class HomeController < ApplicationController
         p 'response_msg'
         p response_msg
         response_msg
+        response_msg = %Q({
+          "type": "message",
+          "text": "#{eval(get_joke)[:joke]}"
+        })
       else
         mentioned_user = {
           id: params[:entities][0][:mentioned][:id],
