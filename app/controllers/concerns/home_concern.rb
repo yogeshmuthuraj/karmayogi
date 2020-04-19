@@ -84,9 +84,10 @@ module HomeConcern
 
     buddy_tester = engineers[rand(0..engineers.length - 1)]
 
-    buddy_tester = User.where(name: buddy_tester, team_id: team_id).first
+    buddy_tester = User.where(name: buddy_tester, team_id: team_id)
     p 'buddy_tester'
     p buddy_tester
+    p buddy_tester.first
     buddy_tester = {
       id: buddy_tester[:user_id],
       name: buddy_tester[:name],
