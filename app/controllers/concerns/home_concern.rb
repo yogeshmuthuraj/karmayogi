@@ -87,7 +87,7 @@ module HomeConcern
     p 'buddy_tester'
     p buddy_tester
 
-    buddy_user = User.where(name: buddy_user, team_id: team_id)
+    buddy_user = User.where(name: buddy_tester, team_id: team_id)
 
     p 'buddy_user'
     p buddy_user
@@ -100,7 +100,7 @@ module HomeConcern
 
     %Q({
       "type": "message",
-      "text": "Your buddy tester is <at>#{buddy_user}</at>"
+      "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>"
       "entities": [
         {
           "type": "mention",
