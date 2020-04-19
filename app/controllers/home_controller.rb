@@ -24,7 +24,7 @@ class HomeController < ApplicationController
           "text": "#{eval(get_joke)[:joke]}"
         })
       elsif params[:text].downcase.match?('findbuddy')
-        response_msg = find_buddy_tester
+        response_msg = find_buddy_tester(team_id)
       else
         mentioned_user = {
           id: params[:entities][0][:mentioned][:id],

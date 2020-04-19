@@ -84,7 +84,23 @@ module HomeConcern
 
     buddy_tester = engineers[rand(0..engineers.length - 1)]
 
-    %Q({ "type": "message", "text": "Your buddy tester is <at>#{buddy_tester}</at>" })
+    user = User.where(name: buddy_tester, team_id: team_id)
+
+    %Q({
+      "type": "message",
+      "text": "Your buddy tester is <at>#{user}</at>"
+      "entities": [
+        {
+          "type": "mention",
+          "mentioned":
+            {
+              "id": "#{user[:id]}",
+              "name": "#{user[:name]}",
+            },
+          "text": "<at>#{user[:name]}</at>",
+        }
+      }
+    })
   end
 end
 
