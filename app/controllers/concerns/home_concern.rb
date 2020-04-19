@@ -110,8 +110,8 @@ module HomeConcern
                 "name": "#{buddy_user[:name]}",
               },
             "text": "<at>#{buddy_user[:name]}</at>",
-          }
-        }
+          },
+        },
       })
     else
       %Q({
