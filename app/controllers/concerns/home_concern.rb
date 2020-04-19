@@ -94,7 +94,7 @@ module HomeConcern
 
       %Q({
         "type": "message",
-        "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>"
+        "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>",
         "entities": [
           {
             "type": "mention",
