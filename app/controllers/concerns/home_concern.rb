@@ -84,7 +84,7 @@ module HomeConcern
 
     buddy_tester = engineers[rand(0..engineers.length - 1)]
 
-    %Q({ "type": "message", "text": "Your buddy tester is @#{buddy_tester}" })
+    %Q({ "type": "message", "text": "Your buddy tester is <at>#{buddy_tester}</at>" })
   end
 end
 
