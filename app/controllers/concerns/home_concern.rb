@@ -64,7 +64,8 @@ module HomeConcern
       2. Removing karma(points): @karmayogi @user--
       3. Leaderboard for the team: @karmayogi leaderboard
       4. Get random joke: @karmayogi jokeme
-      5. Help: @karmayogi help"
+      5. Find buddy tester: @karmayogi findbuddy
+      6. Help: @karmayogi help"
     })
   end
 
@@ -76,6 +77,14 @@ module HomeConcern
     else
       %Q({ "type": "message", "text": "Error: Some problem, try again!" })
     end
+  end
+
+  def find_buddy_tester
+    engineers = File.readlines('app/assets/files/associates.txt', chomp: true)
+
+    buddy_tester = engineers[rand(0..engineers.length - 1)]
+
+    %Q({ "type": "message", "text": "Your buddy tester is @#{buddy_tester}" })
   end
 end
 
