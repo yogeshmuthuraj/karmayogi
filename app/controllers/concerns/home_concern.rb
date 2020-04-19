@@ -79,7 +79,7 @@ module HomeConcern
     end
   end
 
-  def find_buddy_tester
+  def find_buddy_tester(team_id)
     engineers = File.readlines('app/assets/files/associates.txt', chomp: true)
 
     buddy_tester = engineers[rand(0..engineers.length - 1)]
