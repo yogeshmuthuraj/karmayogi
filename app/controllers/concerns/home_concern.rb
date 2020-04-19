@@ -94,16 +94,16 @@ module HomeConcern
 
       %Q({
         "type": "message",
-        "text": "Your buddy tester is <at>Chukkannagari,Shreya Reddy</at>"
+        "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>"
         "entities": [
           {
             "type": "mention",
             "mentioned":
               {
-                "id": "29:1yIXv2hh4Qzlphyu0CfleiB-m3m4i8kgSTcGQlt5VpdthK2nxFzwcvQe2eQ8hnxIunM-F3VyAFb7DfbEXzfutxA",
-                "name": "Chukkannagari,Shreya Reddy}",
+                "id": "#{buddy_user[:id]}",
+                "name": "#{buddy_user[:name]}",
               },
-            "text": "<at>Chukkannagari,Shreya Reddy",
+            "text": "<at>#{buddy_user[:name]}</at>",
           },
         ],
       })
