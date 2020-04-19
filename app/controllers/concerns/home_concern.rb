@@ -84,25 +84,25 @@ module HomeConcern
 
     buddy_tester = engineers[rand(0..engineers.length - 1)]
 
-    buddy_tester = User.where(name: buddy_tester, team_id: team_id).first
+    buddy_user = User.where(name: buddy_user, team_id: team_id).first
 
-    buddy_tester = {
-      id: buddy_tester[:user_id],
-      name: buddy_tester[:name],
+    buddy_user = {
+      id: buddy_user[:user_id],
+      name: buddy_user[:name],
     }
 
     %Q({
       "type": "message",
-      "text": "Your buddy tester is <at>#{user}</at>"
+      "text": "Your buddy tester is <at>#{buddy_user}</at>"
       "entities": [
         {
           "type": "mention",
           "mentioned":
             {
-              "id": "#{user[:id]}",
-              "name": "#{user[:name]}",
+              "id": "#{buddy_user[:id]}",
+              "name": "#{buddy_user[:name]}",
             },
-          "text": "<at>#{user[:name]}</at>",
+          "text": "<at>#{buddy_user[:name]}</at>",
         }
       }
     })
