@@ -84,7 +84,13 @@ module HomeConcern
 
     buddy_tester = engineers[rand(0..engineers.length - 1)]
 
-    user = User.where(name: buddy_tester, team_id: team_id)
+    buddy_tester = User.where(name: buddy_tester, team_id: team_id).first
+    p 'buddy_tester'
+    p buddy_tester
+    buddy_tester = {
+      id: buddy_tester[:user_id],
+      name: buddy_tester[:name],
+    }
 
     %Q({
       "type": "message",
