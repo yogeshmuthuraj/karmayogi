@@ -30,7 +30,7 @@ class HomeController < ApplicationController
       elsif params[:text].downcase.match?('techverify')
         response_msg = %Q({
           "type": "message",
-          "text": "The JIRA is not in the correct status and I can't do Tech veriifcations."
+          "text": "I can't do Tech veriifcations now."
         })
       else
         mentioned_user = {
