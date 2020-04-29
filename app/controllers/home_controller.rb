@@ -27,6 +27,11 @@ class HomeController < ApplicationController
         })
       elsif params[:text].downcase.match?('findbuddy')
         response_msg = find_buddy_tester(team_id)
+      elsif params[:text].downcase.match?('techverify')
+        response_msg = %Q({
+          "type": "message",
+          "text": "The JIRA is not in the correct status and I can't do Tech veriifcations."
+        })
       else
         mentioned_user = {
           id: params[:entities][0][:mentioned][:id],
