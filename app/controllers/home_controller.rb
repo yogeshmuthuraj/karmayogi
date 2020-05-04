@@ -16,8 +16,6 @@ class HomeController < ApplicationController
 
       if params[:text].downcase.match?('leaderboard')
         response_msg = leaderboard(team_id, current_user)
-        p 'response_msg'
-        p response_msg
       elsif params[:text].downcase.match?('help')
         response_msg = help
       elsif params[:text].downcase.match?('jokeme')
@@ -31,6 +29,11 @@ class HomeController < ApplicationController
         response_msg = %Q({
           "type": "message",
           "text": "I can't do Tech veriifcations now."
+        })
+      elsif params[:text].downcase.match?('warmup')
+        response_msg = %Q({
+          "type": "message",
+          "text": "Warmed up!"
         })
       else
         mentioned_user = {
