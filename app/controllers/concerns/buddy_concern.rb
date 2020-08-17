@@ -6,35 +6,43 @@ module BuddyConcern
   def find_buddy_tester(team_id)
     users = User.where(buddy: true, team_id: team_id)
 
-    offset = rand(users.count)
+    if users.count > 0
+      offset = rand(users.count)
 
-    buddy_user = users.offset(offset).first
+      buddy_user = users.offset(offset).first
 
-    if buddy_user
-      buddy_user = {
-        id: buddy_user[:user_id],
-        name: buddy_user[:name],
-      }
+      if buddy_user
+        buddy_user = {
+          id: buddy_user[:user_id],
+          name: buddy_user[:name],
+        }
 
-      %Q({
-        "type": "message",
-        "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>",
-        "entities": [
-          {
-            "type": "mention",
-            "mentioned":
-              {
-                "id": "#{buddy_user[:id]}",
-                "name": "#{buddy_user[:name]}",
-              },
-            "text": "<at>#{buddy_user[:name]}</at>",
-          },
-        ],
-      })
+        %Q({
+          "type": "message",
+          "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>",
+          "entities": [
+            {
+              "type": "mention",
+              "mentioned":
+                {
+                  "id": "#{buddy_user[:id]}",
+                  "name": "#{buddy_user[:name]}",
+                },
+              "text": "<at>#{buddy_user[:name]}</at>",
+            },
+          ],
+        })
+      else
+        %Q({
+          "type": "message",
+          "text": "Your buddy tester is <at>#{buddy_tester}</at>"
+        })
+      end
     else
       %Q({
         "type": "message",
-        "text": "Your buddy tester is <at>#{buddy_tester}</at>"
+        "text": "<h1>Buddy List</h1>\n\n
+        No Buddy Tester added yet.
       })
     end
   end
@@ -59,14 +67,23 @@ module BuddyConcern
 
   def buddy_list(team_id)
     buddy_users = User.where(buddy: true, team_id: team_id)
-    buddy_users.each_with_index do | buddy_user, index |
-      stringyfied_buddy_users << "\n #{index.to_i + 1} #{buddy_user[:name]}"
-    end
 
-    %Q({
-      "type": "message",
-      "text": "<h1>Buddy List</h1>\n\n
-      #{stringyfied_buddy_users}"
-    })
+    if buddy_users.count > 0
+      buddy_users.each_with_index do | buddy_user, index |
+        stringyfied_buddy_users << "\n #{index.to_i + 1} #{buddy_user[:name]}"
+      end
+
+      %Q({
+        "type": "message",
+        "text": "<h1>Buddy List</h1>\n\n
+        #{stringyfied_buddy_users}"
+      })
+    else
+      %Q({
+        "type": "message",
+        "text": "<h1>Buddy List</h1>\n\n
+        No Buddy Tester added yet.
+      })
+    end
   end
 end
