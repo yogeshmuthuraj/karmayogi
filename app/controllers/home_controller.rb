@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   include HomeConcern
-  include BuddyConcern
+  # include BuddyConcern
   include JokeConcern
 
   def index
