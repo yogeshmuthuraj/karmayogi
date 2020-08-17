@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include HomeConcern
+  include BuddyConcern
   include JokeConcern
 
   def index
@@ -35,6 +36,22 @@ class HomeController < ApplicationController
           "type": "message",
           "text": "Warmed up!"
         })
+      elsif params[:text].downcase.match?('addbuddy')
+        mentioned_user = {
+          id: params[:entities][0][:mentioned][:id],
+          name: params[:entities][0][:mentioned][:name],
+        }
+
+        response_msg = add_buddy(team_id, mentioned_user)
+      elsif params[:text].downcase.match?('removebuddy')
+        mentioned_user = {
+          id: params[:entities][0][:mentioned][:id],
+          name: params[:entities][0][:mentioned][:name],
+        }
+
+        response_msg = remove_buddy(team_id, mentioned_user)
+      elsif params[:text].downcase.match?('buddylist')
+        response_msg = buddy_list(team_id)
       else
         mentioned_user = {
           id: params[:entities][0][:mentioned][:id],

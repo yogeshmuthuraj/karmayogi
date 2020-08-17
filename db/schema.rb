@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_085942) do
+ActiveRecord::Schema.define(version: 2020_08_17_081025) do
 
   create_table "messages", force: :cascade do |t|
     t.boolean "positive"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_05_20_085942) do
     t.integer "karma"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "buddy", default: false
     t.index ["team_id"], name: "index_users_on_team_id"
     t.index ["user_id"], name: "index_users_on_user_id"
   end
