@@ -106,11 +106,8 @@ module BuddyConcern
   def buddy_list(team_id)
     buddy_users = User.where(buddy: true, team_id: team_id)
 
-    p 'debugy buddy_users'
-    p buddy_users
-
     if buddy_users.count > 0
-      stringyfied_buddy_users = nil
+      stringyfied_buddy_users = ''
       buddy_users.each_with_index do | buddy_user, index |
         p 'debugy inside loop'
         p "\n #{index.to_i + 1}. #{buddy_user[:name]}"
