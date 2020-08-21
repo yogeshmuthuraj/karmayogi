@@ -29,7 +29,7 @@ Currently hosted at Heroku's free plan. So use judiciously.
 *   5\. Find buddy tester: @karmayogi findbuddy
 *   6\. Add buddy tester: @karmayogi addbuddy @user
 *   7\. Remove buddy tester: @karmayogi removebuddy @user
-*   8\. List buddy testers: @karmayogi listbuddy
+*   8\. List buddy testers: @karmayogi buddylist
 *   9\. Help: @karmayogi help"
 
 ###### Roadmap
