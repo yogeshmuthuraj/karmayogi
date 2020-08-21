@@ -5,8 +5,6 @@ module BuddyConcern
 
   def find_buddy_tester(team_id)
     users = User.where(buddy: true, team_id: team_id)
-    p 'debugy users'
-    p users
 
     if users.count > 0
       offset = rand(users.count)
@@ -41,11 +39,10 @@ module BuddyConcern
         })
       end
     else
-      p 'debugy else'
       %Q({
         "type": "message",
         "text": "<h1>Buddy List</h1>\n\n
-        No Buddy Tester added yet.
+        No Buddy Tester added yet."
       })
     end
   end
@@ -55,7 +52,26 @@ module BuddyConcern
       user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
       user.toggle!(:buddy)
 
-      %Q({ "type": "message", "text": "#{user[:name]} added as a buddy" })
+      buddy_user = {
+        id: user[:user_id],
+        name: user[:name],
+      }
+
+      %Q({
+        "type": "message",
+        "text": "<at>#{buddy_user[:name]}</at> added as a buddy",
+        "entities": [
+          {
+            "type": "mention",
+            "mentioned":
+              {
+                "id": "#{buddy_user[:id]}",
+                "name": "#{buddy_user[:name]}",
+              },
+            "text": "<at>#{buddy_user[:name]}</at>",
+          },
+        ],
+      })
     end
   end
 
@@ -64,7 +80,26 @@ module BuddyConcern
       user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
       user.toggle!(:buddy)
 
-      %Q({ "type": "message", "text": "#{user[:name]} removed as a buddy" })
+      buddy_user = {
+        id: user[:user_id],
+        name: user[:name],
+      }
+
+      %Q({
+        "type": "message",
+        "text": "<at>#{buddy_user[:name]}</at> removed as a buddy",
+        "entities": [
+          {
+            "type": "mention",
+            "mentioned":
+              {
+                "id": "#{buddy_user[:id]}",
+                "name": "#{buddy_user[:name]}",
+              },
+            "text": "<at>#{buddy_user[:name]}</at>",
+          },
+        ],
+      })
     end
   end
 

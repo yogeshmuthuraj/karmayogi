@@ -65,9 +65,6 @@ class HomeController < ApplicationController
       response_msg = %Q({ "type": "message", "text": "Error: The Team is not registered." })
     end
 
-    p 'debugy response_msg'
-    p response_msg
-
     render plain: response_msg
   end
 end
