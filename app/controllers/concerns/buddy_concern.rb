@@ -107,11 +107,7 @@ module BuddyConcern
     if buddy_users.count > 0
       stringyfied_buddy_users = ''
       buddy_users.each_with_index do | buddy_user, index |
-        p 'debugy inside loop'
-        p "\n #{index.to_i + 1}. #{buddy_user[:name]}"
-        stringyfied_buddy_users << "\n #{index.to_i + 1} #{buddy_user[:name]}"
-        p 'debugy stringyfied_buddy_users'
-        p stringyfied_buddy_users
+        stringyfied_buddy_users << "\n #{index.to_i + 1}. #{buddy_user[:name]}"
       end
 
       %Q({

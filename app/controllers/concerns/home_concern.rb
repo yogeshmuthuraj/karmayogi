@@ -65,7 +65,10 @@ module HomeConcern
       3. Leaderboard for the team: @karmayogi leaderboard
       4. Get random joke: @karmayogi jokeme
       5. Find buddy tester: @karmayogi findbuddy
-      6. Help: @karmayogi help"
+      6. Add buddy tester: @karmayogi addbuddy @user
+      7. Remove buddy tester: @karmayogi removebuddy @user
+      8. List buddy testers: @karmayogi listbuddy
+      9. Help: @karmayogi help"
     })
   end
 
@@ -78,42 +81,6 @@ module HomeConcern
       %Q({ "type": "message", "text": "Error: Some problem, try again!" })
     end
   end
-
-  # def find_buddy_tester(team_id)
-  #   engineers = File.readlines('app/assets/files/associates.txt', chomp: true)
-  #
-  #   buddy_tester = engineers[rand(0..engineers.length - 1)]
-  #
-  #   buddy_user = User.where(name: buddy_tester, team_id: team_id).first
-  #
-  #   if buddy_user
-  #     buddy_user = {
-  #       id: buddy_user[:user_id],
-  #       name: buddy_user[:name],
-  #     }
-  #
-  #     %Q({
-  #       "type": "message",
-  #       "text": "Your buddy tester is <at>#{buddy_user[:name]}</at>",
-  #       "entities": [
-  #         {
-  #           "type": "mention",
-  #           "mentioned":
-  #             {
-  #               "id": "#{buddy_user[:id]}",
-  #               "name": "#{buddy_user[:name]}",
-  #             },
-  #           "text": "<at>#{buddy_user[:name]}</at>",
-  #         },
-  #       ],
-  #     })
-  #   else
-  #     %Q({
-  #       "type": "message",
-  #       "text": "Your buddy tester is <at>#{buddy_tester}</at>"
-  #     })
-  #   end
-  # end
 end
 
 def add_karma(current_user, mentioned_user, team_id)

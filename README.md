@@ -26,7 +26,11 @@ Currently hosted at Heroku's free plan. So use judiciously.
 *   2\. Removing karma(points): @karmayogi @user--
 *   3\. Leaderboard for the team: @karmayogi leaderboard
 *   4\. Get random joke: @karmayogi jokeme
-*   5\. Help: @karmayogi help
+*   5\. Find buddy tester: @karmayogi findbuddy
+*   6\. Add buddy tester: @karmayogi addbuddy @user
+*   7\. Remove buddy tester: @karmayogi removebuddy @user
+*   8\. List buddy testers: @karmayogi listbuddy
+*   9\. Help: @karmayogi help"
 
 ###### Roadmap
 
