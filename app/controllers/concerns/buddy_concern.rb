@@ -5,6 +5,8 @@ module BuddyConcern
 
   def find_buddy_tester(team_id)
     users = User.where(buddy: true, team_id: team_id)
+    p 'debugy users'
+    p users
 
     if users.count > 0
       offset = rand(users.count)
@@ -39,6 +41,7 @@ module BuddyConcern
         })
       end
     else
+      p 'debugy else'
       %Q({
         "type": "message",
         "text": "<h1>Buddy List</h1>\n\n
@@ -47,7 +50,7 @@ module BuddyConcern
     end
   end
 
-  def add_buddy(mentioned_user, team_id)
+  def add_buddy(team_id, mentioned_user)
     ActiveRecord::Base.transaction do
       user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
       user.toggle!(:buddy)
@@ -56,7 +59,7 @@ module BuddyConcern
     end
   end
 
-  def remove_buddy(mentioned_user, team_id)
+  def remove_buddy(team_id, mentioned_user)
     ActiveRecord::Base.transaction do
       user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
       user.toggle!(:buddy)
