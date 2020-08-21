@@ -120,7 +120,7 @@ module BuddyConcern
       %Q({
         "type": "message",
         "text": "<h1>Buddy List</h1>\n\n
-        No Buddy Tester added yet.
+        No Buddy Tester added yet."
       })
     end
   end
