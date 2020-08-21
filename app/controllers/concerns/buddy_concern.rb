@@ -50,7 +50,7 @@ module BuddyConcern
   def add_buddy(team_id, mentioned_user)
     ActiveRecord::Base.transaction do
       user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
-      user.toggle!(:buddy)
+      user.update!(buddy: true)
 
       buddy_user = {
         id: user[:user_id],
@@ -78,7 +78,7 @@ module BuddyConcern
   def remove_buddy(team_id, mentioned_user)
     ActiveRecord::Base.transaction do
       user = User.where(user_id: mentioned_user[:id], name: mentioned_user[:name], team_id: team_id).first_or_create!()
-      user.toggle!(:buddy)
+      user.update!(buddy: false)
 
       buddy_user = {
         id: user[:user_id],
