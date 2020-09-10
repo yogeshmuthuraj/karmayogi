@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.5.3'
+ruby '2.4.1'
 
-gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'haml-rails', '~> 1.0.0'
 gem 'haml', '~> 5.0.0' # For HAML templating
@@ -12,6 +11,8 @@ gem 'openssl'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'sass-rails', '~> 5.0'
+gem 'execjs'
+gem 'therubyracer'
 gem 'table_print'
 gem 'uglifier', '>= 1.3.0'
 
@@ -27,8 +28,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
